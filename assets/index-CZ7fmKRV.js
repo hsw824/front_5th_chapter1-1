@@ -1,8 +1,8 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))a(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const n of s.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&a(n)}).observe(document,{childList:!0,subtree:!0});function r(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerPolicy&&(s.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?s.credentials="include":e.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function a(e){if(e.ep)return;e.ep=!0;const s=r(e);fetch(e.href,s)}})();const d=(l,t)=>{try{localStorage.setItem(l,JSON.stringify(t))}catch(r){alert("error",r)}},p=l=>{try{const t=localStorage.getItem(l);return JSON.parse(t)}catch(t){alert("error",t)}},h=l=>{try{localStorage.removeItem(l)}catch(t){alert("error",t)}},x="user",o={isLoggedIn:!1,userInfo:p(x)},c=l=>location.pathname===l?"text-blue-600 font-bold":"text-gray-600",f=({isLoggedIn:l})=>{const t=l?`
-        <li><a href="/profile" class="${c("/profile")}">프로필</a></li>
-        <li><a href="/login" class="text-gray-600" id="logout">로그아웃</a></li>
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const a of s.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&i(a)}).observe(document,{childList:!0,subtree:!0});function r(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerPolicy&&(s.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?s.credentials="include":e.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function i(e){if(e.ep)return;e.ep=!0;const s=r(e);fetch(e.href,s)}})();const c=(l,t)=>{try{localStorage.setItem(l,JSON.stringify(t))}catch(r){alert("error",r)}},f=l=>{try{const t=localStorage.getItem(l);return JSON.parse(t)}catch(t){alert("error",t)}},x=l=>{try{localStorage.removeItem(l)}catch(t){alert("error",t)}},y="user",w=location.origin.includes("hsw824"),n=w?"/front_5th_chapter1-1":"",o={isLoggedIn:!1,userInfo:f(y)},u=l=>location.pathname===n+l?"text-blue-600 font-bold":"text-gray-600",b=({isLoggedIn:l})=>{const t=l?`
+        <li><a href="${n}/profile" class="${u("/profile")}">프로필</a></li>
+        <li><a href="${n}/login" class="text-gray-600" id="logout">로그아웃</a></li>
       `:`
-      <li><a href="/login" class="text-gray-600">로그인</a></li>
+      <li><a href="${n}/login" class="text-gray-600">로그인</a></li>
       `;return`
     <header class="bg-blue-600 text-white p-4 sticky top-0">
       <h1 class="text-2xl font-bold">항해플러스</h1>
@@ -10,18 +10,20 @@
 
     <nav class="bg-white shadow-md p-2 sticky top-14">
       <ul class="flex justify-around">
-        <li><a href="/" class="${c("/")}">홈</a></li>
+        <li>
+          <a href="${n}/" class="${u("/")}">홈</a>
+        </li>
         ${t}
       </ul>
     </nav>
-  `},b=`
+  `},g=`
   <footer class="bg-gray-200 p-4 text-center">
     <p>&copy; 2024 항해플러스. All rights reserved.</p>
   </footer>
-`,u=()=>`
+`,m=()=>`
   <div class="bg-gray-100 min-h-screen flex justify-center">
     <div class="max-w-md w-full">
-      ${f({isLoggedIn:o.isLoggedIn})}
+      ${b({isLoggedIn:o.isLoggedIn})}
 
       <main class="p-4">
         <div class="mb-4 bg-white rounded-lg shadow p-4">
@@ -137,10 +139,10 @@
         </div>
       </main>
 
-      ${b}
+      ${g}
     </div>
   </div>
-`,y=()=>`
+`,I=()=>`
   <main class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div
       class="bg-white p-8 rounded-lg shadow-md w-full text-center"
@@ -152,12 +154,15 @@
       <p class="text-gray-600 mb-8">
         요청하신 페이지가 존재하지 않거나 이동되었을 수 있습니다.
       </p>
-      <a href="/" class="bg-blue-600 text-white px-4 py-2 rounded font-bold">
+      <a
+        href="${n}/"
+        class="bg-blue-600 text-white px-4 py-2 rounded font-bold"
+      >
         홈으로 돌아가기
       </a>
     </div>
   </main>
-`,m=()=>`
+`,p=()=>`
   <main class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
       <h1 class="text-2xl font-bold text-center text-blue-600 mb-8">
@@ -197,11 +202,11 @@
       </div>
     </div>
   </main>
-`,w=()=>`
+`,E=()=>`
   <div id="root">
     <div class="bg-gray-100 min-h-screen flex justify-center">
       <div class="max-w-md w-full">
-        ${f({isLoggedIn:o.isLoggedIn})}
+        ${b({isLoggedIn:o.isLoggedIn})}
         <main class="p-4">
           <div class="bg-white p-8 rounded-lg shadow-md">
             <h2 class="text-2xl font-bold text-center text-blue-600 mb-8">
@@ -257,8 +262,8 @@
             </form>
           </div>
         </main>
-        ${b}
+        ${g}
       </div>
     </div>
   </div>
-`,I=()=>{if(location.pathname==="/")return u();if(location.pathname==="/login"){if(!o.userInfo)return m();if(o.userInfo.username!=="")return o.isLoggedIn=!0,history.pushState(null,"","/"),window.dispatchEvent(new Event("popstate")),u()}return location.pathname==="/profile"?o.userInfo?(o.isLoggedIn=!0,w()):(o.isLoggedIn=!1,o.userInfo=null,history.pushState(null,"","/login"),window.dispatchEvent(new Event("popstate")),m()):y()},g=()=>{document.querySelector("#root").innerHTML=I();const l=document.querySelector("ul"),t=document.getElementById("login-form"),r=document.getElementById("username"),a=document.getElementById("logout");if(l&&l.addEventListener("click",e=>{if(e.target.tagName==="A"&&e.target.id!=="logout"){e.preventDefault();const s=e.target.getAttribute("href");history.pushState(null,"",s),window.dispatchEvent(new Event("popstate"))}},!1),t&&t.addEventListener("submit",e=>{e.preventDefault(),r.value!==""?(d("user",{username:r.value,email:"",bio:""}),o.userInfo=p("user"),o.isLoggedIn=!0,history.pushState(null,"","/profile"),window.dispatchEvent(new Event("popstate"))):alert("아이디 필수")}),a&&a.addEventListener("click",()=>{history.pushState(null,"","/login"),window.dispatchEvent(new Event("popstate")),o.isLoggedIn=!1,o.userInfo=null,h("user")}),location.pathname==="/profile"){const e=document.getElementById("profile-form"),s=document.getElementById("username"),n=document.getElementById("email"),i=document.getElementById("bio");s.value=o.userInfo.username,n.value=o.userInfo.email,i.value=o.userInfo.bio,e.addEventListener("submit",v=>{v.preventDefault(),d("user",{username:s.value,email:n.value,bio:i.value}),alert("프로필이 업데이트 되었습니다.")})}};window.addEventListener("popstate",()=>{g()});g();
+`,L=()=>{if(location.pathname===n+"/")return m();if(location.pathname===n+"/login"){if(!o.userInfo)return p();if(o.userInfo.username!=="")return o.isLoggedIn=!0,history.pushState(null,"",n+"/"),window.dispatchEvent(new Event("popstate")),m()}return location.pathname==="/profile"?o.userInfo?(o.isLoggedIn=!0,E()):(o.isLoggedIn=!1,o.userInfo=null,history.pushState(null,"",n+"/login"),window.dispatchEvent(new Event("popstate")),p()):I()},v=()=>{document.querySelector("#root").innerHTML=L();const l=document.querySelector("ul"),t=document.getElementById("login-form"),r=document.getElementById("username"),i=document.getElementById("logout");if(l&&l.addEventListener("click",e=>{if(e.target.tagName==="A"&&e.target.id!=="logout"){e.preventDefault();const s=e.target.getAttribute("href");history.pushState(null,"",n+s),window.dispatchEvent(new Event("popstate"))}},!1),t&&t.addEventListener("submit",e=>{e.preventDefault(),r.value!==""?(c("user",{username:r.value,email:"",bio:""}),o.userInfo=f("user"),o.isLoggedIn=!0,history.pushState(null,"",n+"/profile"),window.dispatchEvent(new Event("popstate"))):alert("아이디 필수")}),i&&i.addEventListener("click",()=>{history.pushState(null,"",n+"/login"),window.dispatchEvent(new Event("popstate")),o.isLoggedIn=!1,o.userInfo=null,x("user")}),location.pathname==="/profile"){const e=document.getElementById("profile-form"),s=document.getElementById("username"),a=document.getElementById("email"),d=document.getElementById("bio");s.value=o.userInfo.username,a.value=o.userInfo.email,d.value=o.userInfo.bio,e.addEventListener("submit",h=>{h.preventDefault(),c("user",{username:s.value,email:a.value,bio:d.value}),alert("프로필이 업데이트 되었습니다.")})}};window.addEventListener("popstate",()=>{v()});v();
