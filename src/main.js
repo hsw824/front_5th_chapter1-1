@@ -1,34 +1,13 @@
 // TODO: 로그인 라우터별 이벤트 리스너 맞게 변경하기
 
+import { USER_KEY } from "./constant/userKey";
+import { useLocalStorage } from "./utils/useLocalStorage";
+
 //TODO: localstorage에서 받아오는 user정보도 기본state로 만들 수 있도록 state.isLoggedIn은 로컬스토리지의 값으로 판별할 수 있을 것 같음
 // 스토어 컴포넌트 함수 라우트
 
-export const setLocalStorage = (key, userInfo) => {
-  try {
-    localStorage.setItem(key, JSON.stringify(userInfo));
-  } catch (error) {
-    alert("error", error);
-  }
-};
-
-export const getLocalStorage = (key) => {
-  try {
-    const item = localStorage.getItem(key);
-    return JSON.parse(item);
-  } catch (error) {
-    alert("error", error);
-  }
-};
-
-export const removeLocalStorage = (key) => {
-  try {
-    localStorage.removeItem(key);
-  } catch (error) {
-    alert("error", error);
-  }
-};
-
-const USER_KEY = "user";
+const { setLocalStorage, getLocalStorage, removeLocalStorage } =
+  useLocalStorage();
 
 const state = {
   isLoggedIn: false,
